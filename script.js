@@ -1,3 +1,5 @@
+const form = document.getElementById("book-form");
+
 const myLibrary = [];
 
 function Book(author, title, numberOfPages, read){
@@ -38,3 +40,17 @@ function closeForm(){
     document.getElementById("overlay").style.display = "none";
     document.getElementById("add-book-popup").style.display = "none";
 }
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const formData = new FormData(form);
+    // const data = Object.fromEntries(formData.entries());
+    const bookName = formData.get("book-name");
+    const authorName = formData.get("author-name");
+    const pageNumber = formData.get("page-number");
+    const alreadyRead = formData.get("read");
+    console.log(bookName);
+    addBookToLibrary(bookName, authorName, pageNumber, alreadyRead);
+    display(myLibrary);
+
+});

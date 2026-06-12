@@ -11,8 +11,16 @@
     <button onclick="addBookFunction()">New Book</button>
     <div id="overlay"></div>
     <div id="add-book-popup">
-        <form> 
-            placeholder
+        <form id="book-form" action="/Library" method="post"> 
+            <label for="book-name">Book Name:</label>
+            <input type="text" class="book-name" name="book-name" />
+            <label for="author-name">Author Name:</label>
+            <input type="text" class="author-name" name="author-name" />
+            <label for="page-number">Page Number:</label>
+            <input type="number" class="page-number" name="page-number" />
+            <label for="read">Read?:</label>
+            <input type="text" class="read" name="read"/>
+            <button type="submit">Submit Info</button>
         </form>
         <button onclick="closeForm()">Close</button>
     </div>
