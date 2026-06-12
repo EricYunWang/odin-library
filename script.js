@@ -1,0 +1,35 @@
+const newBook = document.querySelector("#new-book");
+
+const myLibrary = [];
+
+function Book(author, title, numberOfPages, read){
+    this.author = author;
+    this.title = title;
+    this.numberOfPages = numberOfPages;
+    this.read = read;
+    this.id = crypto.randomUUID();
+}
+
+function addBookToLibrary(author, title, numberOfPages, read){
+    let book = new Book(author, title, numberOfPages, read);
+    myLibrary.push(book);
+}
+
+function display(array){
+    array.forEach((item,index)=>{   
+        console.log(`id ${item.id}: ${item.title}`);
+
+    });
+}
+
+addBookToLibrary("me", "you", 12, true);
+addBookToLibrary("mee", "y2ou", 19, false);
+addBookToLibrary("meee", "yoou", 22, true);
+addBookToLibrary("me3", "yeou", 45, true);
+addBookToLibrary("mwe", "yofu", 78, false);
+
+display(myLibrary);
+
+newBook.addEventListener('click',()=>{
+    addBookFunction();
+})
