@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <button id="new-book">New Book</button>
+    <button onclick="addBookFunction()">New Book</button>
+    <div id="overlay"></div>
+    <div id="add-book-popup">
+        <form> 
+            placeholder
+        </form>
+        <button onclick="closeForm()">Close</button>
+    </div>
 </body>
 </html>

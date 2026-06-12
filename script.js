@@ -1,5 +1,3 @@
-const newBook = document.querySelector("#new-book");
-
 const myLibrary = [];
 
 function Book(author, title, numberOfPages, read){
@@ -30,6 +28,13 @@ addBookToLibrary("mwe", "yofu", 78, false);
 
 display(myLibrary);
 
-newBook.addEventListener('click',()=>{
-    addBookFunction();
-})
+
+function addBookFunction(){
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("add-book-popup").style.display = "block";
+}
+
+function closeForm(){
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("add-book-popup").style.display = "none";
+}
