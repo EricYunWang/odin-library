@@ -1,4 +1,5 @@
 const form = document.getElementById("book-form");
+const containerDiv = document.getElementById("container");
 
 const myLibrary = [];
 
@@ -13,12 +14,19 @@ function Book(author, title, numberOfPages, read){
 function addBookToLibrary(author, title, numberOfPages, read){
     let book = new Book(author, title, numberOfPages, read);
     myLibrary.push(book);
+    display(myLibrary);
+
 }
 
 function display(array){
-    array.forEach((item,index)=>{   
-        console.log(`id ${item.id}: ${item.title}`);
-
+    containerDiv.replaceChildren();
+    array.forEach((book)=>{
+        const newDiv = document.createElement('div');
+        const btn = document.createElement("button");
+        btn.textContent = "read";
+        newDiv.textContent = `${book.title}: ${book.author}`;
+        newDiv.appendChild(btn);
+        containerDiv.appendChild(newDiv);
     });
 }
 
@@ -27,8 +35,6 @@ addBookToLibrary("mee", "y2ou", 19, false);
 addBookToLibrary("meee", "yoou", 22, true);
 addBookToLibrary("me3", "yeou", 45, true);
 addBookToLibrary("mwe", "yofu", 78, false);
-
-display(myLibrary);
 
 
 function addBookFunction(){
@@ -51,6 +57,4 @@ form.addEventListener("submit", function(event) {
     const alreadyRead = formData.get("read");
     console.log(bookName);
     addBookToLibrary(bookName, authorName, pageNumber, alreadyRead);
-    display(myLibrary);
-
 });
