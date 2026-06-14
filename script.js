@@ -11,6 +11,15 @@ function Book(author, title, numberOfPages, read){
     this.id = crypto.randomUUID();
 }
 
+Book.prototype.swapRead = function(){
+    if (this.read == true){
+        this.read = false;
+    }
+    else {
+        this.read = true;
+    }
+}
+
 function addBookToLibrary(author, title, numberOfPages, read){
     let book = new Book(author, title, numberOfPages, read);
     myLibrary.push(book);
@@ -22,22 +31,35 @@ function display(array){
     containerDiv.replaceChildren();
     array.forEach((book)=>{
         const newDiv = document.createElement('div');
-        const btn = document.createElement("button");
-        btn.textContent = "delete";
-        btn.dataset.id = book.id;
-        console.log(btn.dataset.id);
-        newDiv.textContent = `${book.title}: ${book.author}`;
-        newDiv.appendChild(btn);
+        const delBtn = document.createElement("button");
+        const readBtn = document.createElement("button");
+        delBtn.textContent = "Delete";
+        delBtn.dataset.id = book.id;
+        readBtn.textContent = "Read";
+        readBtn.dataset.id = book.id;
+        newDiv.textContent = `${book.title}, ${book.author}, ${book.read}`;
+        newDiv.appendChild(delBtn);
+        newDiv.appendChild(readBtn);
         containerDiv.appendChild(newDiv);
 
-        btn.addEventListener("click", () => {
-            const index  = myLibrary.findIndex(book => book.id === btn.dataset.id);
+        delBtn.addEventListener("click", () => {
+            const index  = myLibrary.findIndex(book => book.id === delBtn.dataset.id);
             if(index > -1){
                 myLibrary.splice(index, 1);
             }
             display(myLibrary);
         });
+
+        readBtn.addEventListener("click", () =>{
+            const index = myLibrary.findIndex(book => book.id === readBtn.dataset.id);
+            if(index > -1){
+                myLibrary[index].swapRead();
+            }
+            display(myLibrary);
+        })
     });
+
+
 }
 
 addBookToLibrary("me", "you", 12, true);
