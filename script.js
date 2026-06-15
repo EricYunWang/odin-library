@@ -1,6 +1,5 @@
 const form = document.getElementById("book-form");
 const containerDiv = document.getElementById("container");
-
 const myLibrary = [];
 
 function Book(author, title, numberOfPages, read){
@@ -31,15 +30,32 @@ function display(array){
     containerDiv.replaceChildren();
     array.forEach((book)=>{
         const newDiv = document.createElement('div');
+        newDiv.classList.add('card-div');
+
         const delBtn = document.createElement("button");
         const readBtn = document.createElement("button");
+        const buttondiv = document.createElement('div');
+        buttondiv.classList.add('button-div');
         delBtn.textContent = "Delete";
         delBtn.dataset.id = book.id;
         readBtn.textContent = "Read";
         readBtn.dataset.id = book.id;
-        newDiv.textContent = `${book.title}, ${book.author}, ${book.read}`;
-        newDiv.appendChild(delBtn);
-        newDiv.appendChild(readBtn);
+
+        const authordiv = document.createElement('div');
+        const titlediv = document.createElement('div');
+        const readdiv = document.createElement('div');
+        authordiv.textContent = `Book Author: ${book.author}`;
+        titlediv.textContent = `Book Ttitle: ${book.title}`;
+        readdiv.textContent = `Book Read? ${book.read}`;
+
+        // newDiv.textContent = `Book Title: ${book.title} \nBook Author: ${book.author}, \nRead? ${book.read}`;
+        // newDiv.style.whiteSpace = "pre-line";
+        buttondiv.appendChild(delBtn);
+        buttondiv.appendChild(readBtn);
+        newDiv.appendChild(authordiv);
+        newDiv.appendChild(titlediv);
+        newDiv.appendChild(readdiv);
+        newDiv.appendChild(buttondiv);
         containerDiv.appendChild(newDiv);
 
         delBtn.addEventListener("click", () => {
@@ -58,15 +74,10 @@ function display(array){
             display(myLibrary);
         })
     });
-
-
 }
 
-addBookToLibrary("me", "you", 12, true);
-addBookToLibrary("mee", "y2ou", 19, false);
-addBookToLibrary("meee", "yoou", 22, true);
-addBookToLibrary("me3", "yeou", 45, true);
-addBookToLibrary("mwe", "yofu", 78, false);
+addBookToLibrary("Taylor Jenkins Reid", "The Seven Husbands of Evelyn Hugo", 400, false);
+addBookToLibrary("Harper Lee", "To Kill a Mockingbird", 19, true);
 
 
 function addBookFunction(){
@@ -82,7 +93,6 @@ function closeForm(){
 form.addEventListener("submit", function(event) {
     event.preventDefault();
     const formData = new FormData(form);
-    // const data = Object.fromEntries(formData.entries());
     const bookName = formData.get("book-name");
     const authorName = formData.get("author-name");
     const pageNumber = formData.get("page-number");
