@@ -77,12 +77,13 @@ function display(array){
 }
 
 addBookToLibrary("Taylor Jenkins Reid", "The Seven Husbands of Evelyn Hugo", 400, false);
-addBookToLibrary("Harper Lee", "To Kill a Mockingbird", 19, true);
+addBookToLibrary("Harper Lee", "To Kill a Mockingbird", 300, true);
 
 
 function addBookFunction(){
     document.getElementById("overlay").style.display = "block";
     document.getElementById("add-book-popup").style.display = "block";
+    document.getElementById("book-name").focus();
 }
 
 function closeForm(){
@@ -100,3 +101,5 @@ form.addEventListener("submit", function(event) {
     console.log(bookName);
     addBookToLibrary(bookName, authorName, pageNumber, alreadyRead);
 });
+
+

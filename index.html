@@ -13,23 +13,22 @@
         <button onclick="addBookFunction()">New Book</button>
     </div>
     <div id="container">
-
-
     </div>
+    
     <div id="overlay"></div>
     <div id="add-book-popup">
         <form id="book-form" action="/Library" method="post"> 
             <label for="book-name">Book Name:</label>
-            <input type="text" class="book-name" name="book-name" />
+            <input type="text" id="book-name" name="book-name" placeholder="To Kill a Mockingbird" required/>
             <label for="author-name">Author Name:</label>
-            <input type="text" class="author-name" name="author-name" />
+            <input type="text" class="author-name" name="author-name" placeholder="Harper Lee" required/>
             <label for="page-number">Page Number:</label>
-            <input type="number" class="page-number" name="page-number" />
+            <input type="number" class="page-number" name="page-number" placeholder="200"/>
             <label for="read">Read?:</label>
-            <input type="text" class="read" name="read"/>
-            <button type="submit">Submit Info</button>
+            <input type="checkbox" class="read" name="read" value="read" checked/>
+            <button class="overlay-button" type="submit">Submit Info</button>
         </form>
-        <button onclick="closeForm()">Close</button>
+            <button class="overlay-button" onclick="closeForm()">Close</button>
     </div>
 </body>
 </html>
