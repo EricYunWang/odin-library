@@ -31,24 +31,16 @@ button {
 
 .card-div{
     min-height: 400px;
-    background-color: #1c355e; /* Classic navy book color */
-    color: #f1d280; /* Gold leaf text look */
+    background-color: #1c355e;
+    color: #f1d280;
     padding: 20px;
     border-radius: 20px;
     border-left: 10px solid #ffcc00;
-    
-    /* 1. Flat spine on left, rounded corners on right opening */
     border-radius: 4px 16px 16px 4px;
-    
-    /* 2. Layered shadows for 3D depth and the book spine crease */
     box-shadow: 
-        /* The spine crease line (5px from left) */
         inset 5px 0px 0px 0px rgba(0, 0, 0, 0.2),
-        /* Subtle 3D shading inside the cover edges */
         inset 0px 0px 20px rgba(0, 0, 0, 0.4),
-        /* Soft shadow behind the book on the table */
         5px 10px 20px rgba(0, 0, 0, 0.3);
-        
     display: grid;
     align-items: center;
     justify-content: center;

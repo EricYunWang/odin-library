@@ -46,10 +46,13 @@ function display(array){
         const readdiv = document.createElement('div');
         authordiv.textContent = `Book Author: ${book.author}`;
         titlediv.textContent = `Book Ttitle: ${book.title}`;
-        readdiv.textContent = `Book Read? ${book.read}`;
-
-        // newDiv.textContent = `Book Title: ${book.title} \nBook Author: ${book.author}, \nRead? ${book.read}`;
-        // newDiv.style.whiteSpace = "pre-line";
+        if(book.read == true){
+            readdiv.textContent = `Read`;
+        }
+        else {
+            readdiv.textContent = `Not Yet Read`;
+        }
+        
         buttondiv.appendChild(delBtn);
         buttondiv.appendChild(readBtn);
         newDiv.appendChild(authordiv);
@@ -79,7 +82,6 @@ function display(array){
 addBookToLibrary("Taylor Jenkins Reid", "The Seven Husbands of Evelyn Hugo", 400, false);
 addBookToLibrary("Harper Lee", "To Kill a Mockingbird", 300, true);
 
-
 function addBookFunction(){
     document.getElementById("overlay").style.display = "block";
     document.getElementById("add-book-popup").style.display = "block";
@@ -98,8 +100,11 @@ form.addEventListener("submit", function(event) {
     const authorName = formData.get("author-name");
     const pageNumber = formData.get("page-number");
     const alreadyRead = formData.get("read");
+    if(alreadyRead == null){
+        addBookToLibrary(bookName, authorName, pageNumber, false);
+    }
+    else {
+        addBookToLibrary(bookName, authorName, pageNumber, true);
+    }
     console.log(bookName);
-    addBookToLibrary(bookName, authorName, pageNumber, alreadyRead);
 });
-
-
