@@ -2,22 +2,41 @@ const form = document.getElementById("book-form");
 const containerDiv = document.getElementById("container");
 const myLibrary = [];
 
-function Book(author, title, numberOfPages, read){
-    this.author = author;
-    this.title = title;
-    this.numberOfPages = numberOfPages;
-    this.read = read;
-    this.id = crypto.randomUUID();
+// function Book(author, title, numberOfPages, read){
+//     this.author = author;
+//     this.title = title;
+//     this.numberOfPages = numberOfPages;
+//     this.read = read;
+//     this.id = crypto.randomUUID();
+// }
+
+class Book {
+    constructor(author, title, numberOfPages, read){
+        this.author = author;
+        this.title = title;
+        this.numberOfPages = numberOfPages;
+        this.read = read;
+        this.id = crypto.randomUUID();
+    }
+
+    swapRead(){
+        if (this.read == true){
+            this.read = false;
+        }
+        else {
+            this.read = true;
+        }
+    }
 }
 
-Book.prototype.swapRead = function(){
-    if (this.read == true){
-        this.read = false;
-    }
-    else {
-        this.read = true;
-    }
-}
+// Book.prototype.swapRead = function(){
+//     if (this.read == true){
+//         this.read = false;
+//     }
+//     else {
+//         this.read = true;
+//     }
+// }
 
 function addBookToLibrary(author, title, numberOfPages, read){
     let book = new Book(author, title, numberOfPages, read);
